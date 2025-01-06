@@ -1,0 +1,143 @@
+:root {
+  --sidebar-width: 250px;
+  --header-height: 60px;
+  --primary-color: #2563eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2, h3 {
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  padding-top: var(--header-height);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr var(--sidebar-width);
+  min-height: calc(100vh - var(--header-height));
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 100;
+}
+
+.left-sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  border-right: 1px solid #e5e7eb;
+  padding: 2rem;
+  overflow-y: auto;
+  background: white;
+}
+
+.main-content {
+  grid-column: 2;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.right-sidebar {
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  border-left: 1px solid #e5e7eb;
+  padding: 2rem;
+  overflow-y: auto;
+  background: white;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 0;
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.section-link {
+  display: block;
+  padding: 0.25rem 0;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.section-link:hover {
+  color: var(--primary-color);
+}
+
+.article {
+  display: none;
+}
+
+.article.active {
+  display: block;
+}
+
+h2, h3 {
+  margin: 1.5rem 0 1rem;
+}
+
+p, ul, ol {
+  margin-bottom: 1rem;
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .layout {
+    grid-template-columns: var(--sidebar-width) 1fr;
+  }
+  .right-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .left-sidebar {
+    display: none;
+  }
+  .main-content {
+    grid-column: 1;
+  }
+}
